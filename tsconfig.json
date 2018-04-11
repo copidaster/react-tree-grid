@@ -1,0 +1,12 @@
+ {
+  "compilerOptions": {
+    "noImplicitAny": false,
+    "removeComments": false,
+    "baseUrl": "./app",
+    "sourceMap": true,
+    "target": "es5",
+    "module": "commonjs",
+    "jsx": "react",
+    "lib": ["dom", "es6"]
+  }
+}
