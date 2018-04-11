@@ -2,7 +2,7 @@
   "compilerOptions": {
     "noImplicitAny": false,
     "removeComments": false,
-    "baseUrl": "./app",
+    "baseUrl": "./",
     "sourceMap": true,
     "target": "es5",
     "module": "commonjs",
