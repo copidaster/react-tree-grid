@@ -1,4 +1,4 @@
-import AmountCell from 'domain/AmountCell';
+import AmountCell from 'api/entity/AmountCell';
 import * as React from 'react';
 import AmountCellView from "./AmountCell"
 

@@ -1,4 +1,4 @@
-import AccountItem from '../domain/AccountItem';
+import AccountItem from '../entity/AccountItem';
 
 import * as lodash from "lodash"
 

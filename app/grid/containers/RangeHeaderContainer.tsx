@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as reactRedux from 'react-redux';
 
 import LineHeaderView from '../components/LineAmountHeader';
-import getMonthes, { Utility } from "../../../utils/PeriodUtility"
+import getMonthes, { Utility } from "../../../api/utils/PeriodUtility"
 
 class StateProps {
     ranges: Array<number>;

@@ -1,6 +1,6 @@
 import "../app/grid/grid.scss"
-import { createHashHistory } from 'history';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { createHashHistory } from 'history';
 import * as React from 'react';
 import * as reactDom from 'react-dom';
 import { IndexRedirect, IndexRoute, Route, Router } from 'react-router';

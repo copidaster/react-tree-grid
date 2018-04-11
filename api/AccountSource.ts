@@ -1,4 +1,4 @@
-import AccountItem from "./AccountItem"
+import AccountItem from "./entity/AccountItem"
 
 export class AccountService {
 

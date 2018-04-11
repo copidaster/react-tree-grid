@@ -1,4 +1,4 @@
-import AmountLine from "./AmountLine"
+import AmountLine from "./entity/AmountLine"
 
 export default class BudgetService {
 

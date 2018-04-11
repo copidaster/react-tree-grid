@@ -2,13 +2,13 @@ import * as lodash from 'lodash';
 
 import ActionDeclaration from './ActionDeclaration';
 import { AppState } from '../state';
-import BudgetService from "../domain/BudgetService"
+import BudgetService from "../api/BudgetSource"
 import { debounce, throttle } from 'lodash';
-import { AccountService, AccountTreeResponse } from '../domain/AccountService';
-import AmountLine from "../domain/AmountLine"
-import AmountCell from '../domain/AmountCell';
-import { CommandManager, IUndoRedoAction } from "../utils/CommandManager"
-import AccountUtils from "../utils/AccountUtils"
+import { AccountService, AccountTreeResponse } from '../api/AccountSource';
+import AmountLine from "../api/entity/AmountLine"
+import AmountCell from '../api/entity/AmountCell';
+import { CommandManager, IUndoRedoAction } from "../api/utils/CommandManager"
+import AccountUtils from "../api/utils/AccountUtils"
 
 class Actions {
 
@@ -65,7 +65,7 @@ function reduce(state: AmountDataState = defaultState, action: any): AmountDataS
 
         case Actions.SetIsLoading.name:
             return lodash.assign({}, state, { isLoading: Actions.SetIsLoading.fromAction(action).isLoading });
-      
+
         case Actions.SetOriginalTree.name:
             return lodash.assign({}, state, { originalTreeList: Actions.SetOriginalTree.fromAction(action).flat });
 
@@ -146,7 +146,7 @@ let throtledSave = throttle(async (key) => {
     if (batchCache.length > 0) {
         var copy = [...batchCache];
         batchCache = [];
-       //saving
+        //saving
     }
 }, 500);
 
