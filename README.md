@@ -11,3 +11,8 @@ There is the following list of functionality:
  - custom horizontal and vertical scrolling;
  - batch collecting saving approach;
  - reactive total calculation.
+
+
+Launch steps:
+- npm install
+- npm run watch -> localhost:3000
