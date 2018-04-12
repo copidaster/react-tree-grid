@@ -15,4 +15,5 @@ There is the following list of functionality:
 
 Launch steps:
 - npm install
-- npm run watch -> localhost:3000
+- npm run watch
+- enjoy with localhost:3000 :)

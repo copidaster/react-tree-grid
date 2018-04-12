@@ -11,7 +11,7 @@ export default class Decorator extends React.Component<StateProps, {}> {
             <div className={"account header"}>
                 <span style={{ marginLeft: 10 }}>ACCOUNT</span>
             </div>
-            <div className={"total header"}>TOTAL</div>
+            <div className={"total static"}>TOTAL</div>
         </div>
     }
 }
