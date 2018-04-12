@@ -21,10 +21,8 @@ const mapStateToProps = (state: AppState, ownProps: OwnProps): StateProps => {
     var cells = null;
     if (line != null) cells = line.line;
 
-    if (data.isNominated) cells = null;
-
     if (line == null) {
-        console.error('id ' + ownProps.lineId + " line is empty");
+        throw Error('id ' + ownProps.lineId + " line is empty");
     }
 
     return {
@@ -32,8 +30,7 @@ const mapStateToProps = (state: AppState, ownProps: OwnProps): StateProps => {
         cells: (!data.isCollapsed && data.isParent && !data.custom) ? null : cells,
         editable: !line.isParent,
         isCollapsed: data.isCollapsed,
-        isVisible: data.isVisible,
-        lockedPeriods: []
+        isVisible: data.isVisible
     }
 }
 

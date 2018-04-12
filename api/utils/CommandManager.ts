@@ -1,3 +1,5 @@
+// Provides tools for implementing undo/redo.
+
 export interface IUndoRedoAction {
     execute: () => void;
     unExecute: () => void;

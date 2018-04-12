@@ -1,7 +1,5 @@
 import AccountItem from '../entity/AccountItem';
 
-import * as lodash from "lodash"
-
 export class AccountTypeRegistry {
     public static Income = 'Income';
     public static CostOfSales = 'Cost of Sales';
@@ -50,20 +48,6 @@ export default class AccountUtils {
         ChildrenLeavesIds: [],
         ChildrenParentsIds: []
     };
-
-    private static createDublicatedAsTotal(accountItem: AccountItem) {
-        return {
-            Id: accountItem.Id + "%customcalculation",
-            LocalId: accountItem.LocalId + "%customcalculation",
-            ParentId: accountItem.Id,
-            AccountType: 'Custom',
-            Name: 'Total ' + accountItem.Name,
-            Number: '',
-            IsInactive: false,
-            ChildrenLeavesIds: [],
-            ChildrenParentsIds: [],
-        };
-    }
 
     public static getSortedToParentsCombinedWithCustom(tree: any) {
 

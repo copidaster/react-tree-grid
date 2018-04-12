@@ -8,8 +8,6 @@ export class StateProps {
     isParent: boolean;
     childrenCount: number;
     level: number;
-    isInActive: boolean;
-    isNominated: boolean;
     isCollapsed: boolean;
     isVisible: boolean;
     isCustom: boolean;
@@ -42,10 +40,9 @@ export default class AccountWithTotalItem extends React.Component<StateProps & D
         if (!this.props.isVisible) return null;
 
         var accountItemTypeClass = this.props.isParent ? "parent" : "leaf";
-        var isInactiveClass = this.props.isInActive ? 'inactive' : '';
         var negative = this.props.total < 0 ? ' negative' : '';
 
-        let total = this.props.isNominated ? null : Math.round(this.props.total).toLocaleString();
+        let total =Math.round(this.props.total).toLocaleString();
 
         return <div className={"flex-center-alignment"}>
             <div className={"account " + accountItemTypeClass}>
@@ -53,10 +50,8 @@ export default class AccountWithTotalItem extends React.Component<StateProps & D
                     <div style={{ width: this.props.level * 7 }} />
                     {this.renderCollapseIcon()}
                 </div>
-                <div className={'line-amount-header ' + isInactiveClass} title={this.props.name}>{this.props.name}</div>
+                <div className={'line-amount-header'} title={this.props.name}>{this.props.name}</div>
                 {(this.props.isParent && this.props.isCollapsed) && <span className={'line-header-children-count'}>{this.props.childrenCount}</span>}
-                <div className={'inactive-container'} title={"Account is inactive"}>{this.props.isInActive && <MoneyOff className={'inactive-sign'} />}</div>
-                <div className={'inactive-container'} title={"Account is nominated"}>{this.props.isNominated && <Visibility className={'inactive-sign'} />}</div>
             </div>
             <div title={total} className={"total " + accountItemTypeClass + negative}>{(this.props.isParent && !this.props.isCollapsed && !this.props.isCustom) ? null : total}</div>
         </div>

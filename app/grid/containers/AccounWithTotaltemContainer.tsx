@@ -29,8 +29,6 @@ const mapStateToProps = (state: AppState, ownProps: OwnProps): StateProps => {
         level: line.level,
         childrenCount: line.childrenLeaves.length + line.childrenParents.length,
         isParent: line.isParent,
-        isNominated: line.isNominated,
-        isInActive: line.isInactive,
         total: total,
         isCollapsed: line.isCollapsed,
         isVisible: line.isVisible,

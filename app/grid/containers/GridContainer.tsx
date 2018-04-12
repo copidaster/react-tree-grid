@@ -45,7 +45,7 @@ class Decorator extends React.Component<DecoratorProps, {}> {
             </Scrollbars>
             <div style={{ marginLeft: 365, display: 'flex', position: 'relative' }}>
                 <div id={'main-horiz'} onScroll={() => { this.onScroll(); }} className={'budget-scroll'} style={{ position: 'absolute', overflowX: 'scroll', width: '100%', top: 2 }} >
-                    <div style={{ width: this.props.countOfPeriods * 82, height: 2, }} />
+                    <div style={{ width: this.props.countOfPeriods * 82, height: 2 }} />
                 </div>
             </div>
         </div>

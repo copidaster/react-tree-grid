@@ -1,4 +1,6 @@
 import "../app/grid/grid.scss"
+import "./main.scss"
+
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { createHashHistory } from 'history';
 import * as React from 'react';
@@ -20,7 +22,9 @@ function start() {
     var node = document.getElementById('mainblock');
 
     var store = combineBudgetEditReducer();
+    
     store.dispatch(AmoundData.Service.loadByCurrentCriteria());
+
     reactDom.render(
         <Provider store={store}>
             <MuiThemeProvider >

@@ -8,7 +8,6 @@ export class StateProps {
     editable: boolean;
     isCollapsed: boolean;
     isVisible: boolean;
-    lockedPeriods: Array<number>
 }
 
 export class DispatchProps {
@@ -33,9 +32,8 @@ export default class LineAmountRow extends React.Component<StateProps & Dispatch
                     ?
                     this.props.cells.map(
                         item => {
-                            var isLocked = this.props.lockedPeriods.indexOf(item.Period) !== -1
                             return <AmountCellView
-                                isLocked={isLocked}
+                                isLocked={false}
                                 clickIdKey={"line-" + this.props.lineId + " " + "period-" + item.Period}
                                 arrowMove={(keyCode) => {
                                     this.props.onArrowMove(keyCode, item.Period)

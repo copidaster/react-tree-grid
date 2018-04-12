@@ -3,6 +3,7 @@ import * as React from 'react';
 import * as reactRedux from 'react-redux';
 
 import LineAmountRow from './LineAmountContainer';
+import LineList from "../components/LineList"
 
 class StateProps {
     lineIdList: Array<string>;
@@ -11,11 +12,9 @@ class StateProps {
 class Decorator extends React.Component<StateProps, {}> {
 
     render() {
-        return <div id={'scroll-budgets-vert'} style={{ width: '100%', position: 'relative', overflowX: 'hidden', overflowY: 'hidden' }}>
-            <div style={{ position: 'absolute' }}>
-                {this.props.lineIdList.map(item => <LineAmountRow lineId={item} />)}
-            </div>
-        </div>
+        return <LineList>
+            {this.props.lineIdList.map(item => <LineAmountRow lineId={item} />)}
+        </LineList>
     }
 }
 

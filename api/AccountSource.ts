@@ -2,14 +2,8 @@ import AccountItem from "./entity/AccountItem"
 
 export class AccountService {
 
-    public getTree(workspaceId: string, organisationId: string, callback: (array: AccountTreeResponse) => void) {
-        callback(null);
-    }
-
-    public getTreeAsync(): AccountTreeResponse {
+    public getTree(): AccountTreeResponse {
         return {
-            InactiveLeavesIds: [],
-            NominatedLeavesIds: [],
             Leaves: [
                 {
                     Id: '1',
@@ -86,8 +80,6 @@ export class AccountService {
 }
 
 export class AccountTreeResponse {
-    public InactiveLeavesIds: Array<string>;
-    public NominatedLeavesIds: Array<string>;
     public Leaves: Array<AccountItem>;
     public Parents: Array<AccountItem>;
 }

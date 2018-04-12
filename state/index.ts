@@ -8,24 +8,21 @@ export class AppState {
 
 export default function combineBudgetEditReducer() {
 
-    let combinedReducers:any = {};
-
+    let combinedReducers: any = {};
     combinedReducers[AmountData.name] = AmountData.Reducer;
 
     let defaultState = {
         amountData: AmountData.DefaultState,
     };
 
-    var precombinedReducers = redux.combineReducers(combinedReducers);
+    let devToolExtensin = "devToolsExtension";
 
-
-    let store= redux.createStore(
-        precombinedReducers,
+    return redux.createStore(
+        redux.combineReducers(combinedReducers),
         defaultState,
         redux.compose(
             redux.applyMiddleware(thunk),
-            window["devToolsExtension"] ? window["devToolsExtension"]() : f => f
-        ));
-
-        return store;
+            window[devToolExtensin] ? window[devToolExtensin]() : f => f
+        )
+    );
 };

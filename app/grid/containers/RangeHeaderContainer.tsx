@@ -7,7 +7,6 @@ import getMonthes, { Utility } from "../../../api/utils/PeriodUtility"
 
 class StateProps {
     ranges: Array<number>;
-    lockedPeriods: Array<number>;
 }
 
 class Decorator extends React.Component<StateProps, {}> {
@@ -23,9 +22,7 @@ class Decorator extends React.Component<StateProps, {}> {
                     var year = item.toString().substring(0, 4);
                     var label = monthes.find(inner => inner.id == Number.parseInt(month))
 
-                    var isLocked = this.props.lockedPeriods.indexOf(item) !== -1;
-
-                    return <LineHeaderView year={year} month={label.title} isLocked={isLocked} />
+                    return <LineHeaderView year={year} month={label.title} />
                 })}</div >
             </div>
         </div>
@@ -35,12 +32,11 @@ class Decorator extends React.Component<StateProps, {}> {
 const mapStateToProps = (state: AppState, ownProps): StateProps => {
 
     if (state.amountData.computedTreeList == null || state.amountData.lines == null) {
-        return { ranges: state.amountData.lines[0].line.map(item => item.Period), lockedPeriods: [] }
+        return { ranges: state.amountData.lines[0].line.map(item => item.Period)}
     }
 
     return {
-        ranges: state.amountData.lines[0].line.map(item => item.Period),
-        lockedPeriods: []
+        ranges: state.amountData.lines[0].line.map(item => item.Period)
     }
 }
 

@@ -28,8 +28,6 @@ class TreeItem {
     parentId: string;
     level: number;
     name: string;
-    isInactive: boolean;
-    isNominated: boolean;
     isParent: boolean;
     isVisible: boolean;
     isCollapsed: boolean;
@@ -88,7 +86,7 @@ function reduce(state: AmountDataState = defaultState, action: any): AmountDataS
 let throttledMove = throttle((dispatch, getState, moveDirection, lineId, period) => {
     let state = getState() as AppState;
     var ranges = state.amountData.lines[0].line.map(item => item.Period);
-    var lines = state.amountData.computedTreeList.filter(item => !item.isParent && item.isVisible && !item.isNominated).map(item => item.id);
+    var lines = state.amountData.computedTreeList.filter(item => !item.isParent && item.isVisible).map(item => item.id);
 
     var nextLineId = lineId;
     var nextPeriod = period;
@@ -231,7 +229,7 @@ class Service {
             var amountsData = new BudgetService().getAmountsByBusinessUnitProection();
 
             if (state.amountData.originalTreeList == null) {
-                var tree = new AccountService().getTreeAsync();
+                var tree = new AccountService().getTree();
                 var mappedFlatTreeList = this.mapAccountTreeToFlatSpecificList(tree);
                 var lines = new Array<LineWithTotal>();
 
@@ -267,29 +265,7 @@ class Service {
 
     private static sweepTree(lines: Array<LineWithTotal>, tree: Array<TreeItem>) {
 
-        var inactiveItems = tree.filter(item => item.isInactive).map(item => item.id);
-        var inactiveAndEmptyItems = lines.filter(item => item.total == 0 && inactiveItems.indexOf(item.id) !== -1);
         var idsToRemove = [];
-
-        for (var itemWithInactiveTotal of inactiveAndEmptyItems) {
-
-            var treeItem = tree.find(item => item.id == itemWithInactiveTotal.id);
-            idsToRemove.push(itemWithInactiveTotal.id);
-
-            let topSweep = (parentId: string) => {
-                var parent = tree.find(item => item.id == parentId);
-                var inactiveChildren = parent.childrenLeaves.filter(item => idsToRemove.indexOf(item) !== -1);
-                if (inactiveChildren.length == parent.childrenLeaves.length) {
-                    idsToRemove.push(parentId);
-                    if (parent.parentId != null)
-                        topSweep(parent.parentId);
-                }
-            }
-
-            var parentId = treeItem.parentId;
-            topSweep(parentId);
-        }
-
         var newLines = [...lines.filter(item => idsToRemove.indexOf(item.id) === -1)];
         var newTree = [...tree.filter(item => idsToRemove.indexOf(item.id) === -1)];
 
@@ -434,8 +410,6 @@ class Service {
                 level: 0,
                 parentId: null,
                 isParent: true,
-                isInactive: false,
-                isNominated: false,
                 name: account.Number.length == 0 ? account.Name : account.Number + " - " + account.Name,
                 isVisible: true,
                 isCollapsed: false,
@@ -460,13 +434,11 @@ class Service {
             array.push({
                 id: account.Id,
                 parentId: idParent,
-                isInactive: false,
                 level: currentLevel + 1,
                 isParent: true,
                 name: account.Number + "-" + account.Name,
                 isVisible: true,
                 isCollapsed: false,
-                isNominated: false,
                 childrenLeaves: account.ChildrenLeavesIds.map(item => item.LocalId.toString()),
                 childrenParents: account.ChildrenParentsIds,
                 custom: account.AccountType == 'Custom'
@@ -478,13 +450,11 @@ class Service {
             array.push({
                 id: account.LocalId,
                 parentId: idParent,
-                isInactive: account.IsInactive,
                 level: currentLevel + 1,
                 isParent: false,
                 name: account.Number.length == 0 ? account.Name : account.Number + " - " + account.Name,
                 isVisible: true,
                 isCollapsed: false,
-                isNominated: tree.NominatedLeavesIds.indexOf(account.Id) !== -1,
                 childrenLeaves: account.ChildrenLeavesIds.map(item => item.LocalId.toString()),
                 childrenParents: account.ChildrenParentsIds
             });

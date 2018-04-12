@@ -28,7 +28,6 @@
     background-color: white;
 }
 
-
 .budget-scroll::-webkit-scrollbar-thumb {
     border-radius: 15px;
     background: #ccc;
@@ -223,6 +222,12 @@
             &.negative{
                 color:#e9383a;
             }
+
+            &.header{
+                height: 100%;
+                border-bottom: none;
+                display: flex;
+            }
         }
     
         .account {
@@ -243,8 +248,21 @@
             &.leaf{
                 color: black;
             }
+
+            &.header{
+                height: 50px;
+                display: flex; 
+                align-items: center;
+                border: none;
+            }
         }
     
+        .tree-header{
+            display: flex;
+            align-items: center;
+            color:#999999;
+        }
+
         .month {
             text-align: right;
             font-size: 15px;
@@ -308,70 +326,10 @@
             }
         }
     }
-    
-    
-.narrow-menu-item {
-    justify-content: space-between;
-    padding: 5px 10px;
 
-    &.budget {
-        padding: 5px 0px;
-        
-        svg.icon {
-            fill: rgb(153, 153, 153) !important;
-        }
-
-        &.selected {
-            font-family: 'Lato-Bold';
-            svg.icon {
-                fill: black !important;
-            }
-        }
-    }
-}
-
-.narrow-menu {
-    background-color: black;
-    border-radius: 50%;
-    height: 24px;
-    width: 24px;
-
-    button {
-        position: absolute;
-        top: -12px;
-        left: -12px;
-
-        svg {
-            fill: white !important;
-        }
-    }
-}
-
-.business-unit-tree-leaf{
-    padding-top: 7px;
-    padding-bottom: 7px;
-    padding-left: 12px;
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-    cursor: pointer;
-
-    &.selected{
-        font-family: 'Lato-Bold';
-    }
-}
-
-
-.business-unit-tree-parent{
-    display: flex;
-    align-items: center;
-    padding-top: 5px;
-    padding-bottom: 5px;
-}
-
-.business-unit-header-label
-{
-    color: #999999;
-    margin-bottom: 4px;
-    font-size: 14px;
+.hidden-scroll-container{
+    width: 100%;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: hidden
 }

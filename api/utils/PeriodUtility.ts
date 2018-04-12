@@ -41,41 +41,4 @@ export class Utility {
         var date = new Date();
         return new Period(date.getFullYear(), date.getMonth() + 1);
     }
-
-    public static ToUserFriendlyString(period: Period): string {
-        var month = GetTitledMonths().filter(item => item.id == period.Month);
-        if (month.length == 0) {
-            throw Error('Can not find month');
-        }
-
-        return month[0].title + " " + period.Year.toString();
-    }
-
-    public static ApplyShiftReportPeriod(period: Period, shift: number): Period {
-        return this.ApplyShiftCore(period, shift);
-    }
-
-    public static ApplyShiftFY(period: Period, reportinstantMonth: number, shift: number): Period {
-        if (shift < 0) shift++;
-
-        var adjusted = this.ApplyShiftCore(period, shift);
-
-        if (reportinstantMonth <= period.Month) {
-            adjusted.Year--;
-        }
-
-        return adjusted;
-    }
-
-    public static ApplyShiftCalendar(period: Period, shift: number): Period {
-        if (shift > 0) shift--;
-        return this.ApplyShiftCore(period, shift);
-    }
-
-    public static ApplyShiftCore(period: Period, shift: number) {
-        var date = new Date(period.Year, period.Month - 1);
-        var threeMonthsInTheFuture = new Date(new Date(date).setMonth((date.getMonth()) + shift));
-
-        return new Period(threeMonthsInTheFuture.getFullYear(), threeMonthsInTheFuture.getMonth() + 1);
-    }
 }
