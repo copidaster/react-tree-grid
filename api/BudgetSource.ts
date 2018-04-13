@@ -70,6 +70,24 @@ export default class BudgetService {
                 },
                 {
                     LineId: '12', AmountCells: zeroAmounts
+                },
+                {
+                    LineId: '13', AmountCells: zeroAmounts
+                },
+                {
+                    LineId: '14', AmountCells: zeroAmounts
+                },
+                {
+                    LineId: '15', AmountCells: zeroAmounts
+                },
+                {
+                    LineId: '16', AmountCells: zeroAmounts
+                },
+                {
+                    LineId: '17', AmountCells: zeroAmounts
+                },
+                {
+                    LineId: '18', AmountCells: zeroAmounts
                 }
             ]
         };

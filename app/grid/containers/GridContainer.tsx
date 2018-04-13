@@ -31,7 +31,7 @@ class Decorator extends React.Component<DecoratorProps, {}> {
             return <div className={"budget-view budget-grid-box column-flex-grow"}> Loading.... </div>;
         }
 
-        return <div className={"budget-view budget-grid-box column-flex-grow"} style={{ width: '100%', height: 800, border: '1px solid grey', display: 'flex', flexDirection: 'column', userSelect: 'none' }}>
+        return <div className={"budget-view budget-grid-box column-flex-grow"} style={{ width: '100%', height: 600, border: '1px solid grey', display: 'flex', flexDirection: 'column', userSelect: 'none' }}>
             <HeaderContainer />
             <div className={'budget-grid-header-container'}>
                 <LabelContainer />
